@@ -127,6 +127,16 @@
         font-weight: bold;
         text-align: center;
       }
+      #videoInvite {
+        text-align: center;
+        margin: 30px;
+      }
+
+      #videoMsg {
+        color: green;
+        font-weight: bold;
+        margin-top: 10px;
+      }
     </style>
   </head>
   <body>
@@ -159,9 +169,9 @@
               class="gallery-img"
             />
             <p>
-              <b>Music Festival 2025</b><br/>
+              <b>Music Festival 2025</b><br />
               Community members enjoyed performances by local artists</p>
-          </td>
+            </td>
 
           <td>
             <img
@@ -172,7 +182,7 @@
             />
             <p>
               <b>Food Fair</b><br />
-              Residents savored a wide range of local dishes </p>
+              Residents savored a wide range of local dishes</p>
           </td>
 
           <td>
@@ -184,7 +194,7 @@
             />
             <p>
               <b>Tree Plantation Drive</b><br />
-               Community volunteers planted trees throughout the neighborhood </p>
+              Community volunteers planted trees throughout the neighborhood </p>
           </td>
         </tr>
 
@@ -210,7 +220,7 @@
             />
             <p>
               <b>Health Camp</b><br />
-              Free health checkups and awareness campaigns were organized for the public</p>
+             Free health checkups and awareness campaigns were organized for the public</p>
           </td>
 
           <td>
@@ -222,7 +232,7 @@
             />
             <p>
               <b>Cultural Night</b><br />
-               Dance, music, and cultural events entertained the audience</p>
+              Dance, music, and cultural events entertained the audience</p>
           </td>
         </tr>
       </table>
@@ -265,7 +275,13 @@
           "
         >
           <label>Name</label>
-          <input type="text" placeholder="Enter your name" required autofocus />
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+            required
+            autofocus
+          />
 
           <label>Email</label>
           <input type="email" placeholder="Enter your email" required />
@@ -342,6 +358,16 @@
         <p id="confirmMsg"></p>
       </div>
     </section>
+    <section id="videoInvite">
+      <h2>Event Promo Video</h2>
+
+      <video id="promoVideo" width="500" controls oncanplay="videoReady()">
+        <source src="promo.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <p id="videoMsg"></p>
+    </section>
     <!-- Footer -->
     <footer>
       <p>&copy; 2026 Local Community Event Portal</p>
@@ -361,7 +387,7 @@
         msg.innerHTML = "✓ Valid Phone Number";
         msg.style.color = "green";
       } else {
-        msg.innerHTML = "Enter a valid 10-digit phone number";
+        msg.innerHTML = "✗ Enter a valid 10-digit phone number";
         msg.style.color = "red";
       }
     }
@@ -436,5 +462,19 @@
       let count = document.getElementById("feedbackText").value.length;
       document.getElementById("charCount").innerHTML = count;
     }
+
+    function videoReady() {
+      document.getElementById("videoMsg").innerHTML = "✅ Video ready to play";
+    }
+
+    window.onbeforeunload = function () {
+      let name = document.getElementById("name").value;
+      let phone = document.getElementById("phone").value;
+      let feedback = document.getElementById("feedbackText").value;
+
+      if (name || phone || feedback) {
+        return "You have unfinished form data.";
+      }
+    };
   </script>
 </html>
