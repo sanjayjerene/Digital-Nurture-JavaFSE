@@ -1,286 +1,440 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Local Community Event Portal</title>
 
     <style>
-        /* Welcome Banner Styling */
-        #welcomeBanner {
-            background-color: blue;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
+      /* Welcome Banner Styling */
+      #welcomeBanner {
+        background-color: blue;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
 
-        /* Highlight Class */
-        .highlight {
-            background-color: rgb(255, 111, 0);
-            background-color: rgb(255, 145, 0);
-            color: black;
-            font-weight: bold;
-            padding: 2px 5px;
-        }
-        .gallery-img {
-            width: 200px;
-            height: 140px;
-            border: 3px solid #333;
-            border-radius: 8px;
-            padding: 3px;
-            transition: transform 0.3s ease;
-        }
+      /* Highlight Class */
+      .highlight {
+        background-color: rgb(255, 111, 0);
+        color: black;
+        font-weight: bold;
+        padding: 2px 5px;
+      }
+      .gallery-img {
+        width: 200px;
+        height: 140px;
+        border: 3px solid #333;
+        border-radius: 8px;
+        padding: 3px;
+        transition: transform 0.3s ease;
+      }
 
-        .gallery-img:hover {
-            transform: scale(1.1);
-        }
+      .gallery-img:hover {
+        transform: scale(1.1);
+      }
 
-        .gallery-table {
-            margin: auto;
-            border-collapse: collapse;
-        }
+      .gallery-table {
+        margin: auto;
+        border-collapse: collapse;
+      }
 
-        .gallery-table td {
-            padding: 10px;
-            text-align: center;
-        }
-        .register-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: teal;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
-            transition: transform 0.3s ease;
-        }
+      .gallery-table td {
+        padding: 10px;
+        text-align: center;
+      }
+      .register-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: teal;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+        transition: transform 0.3s ease;
+      }
 
-        .register-btn:hover {
-            background-color: darkcyan;
-            transform: scale(1.1);
-        }
-        .form-container {
-            width: 500px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #f4f4f4;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-            text-align: center;
-        }
+      .register-btn:hover {
+        background-color: darkcyan;
+        transform: scale(1.1);
+      }
+      .form-container {
+        width: 500px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
 
-        .form-container h2 {
-            text-align: center;
-            color: #333;
-        }
+      .form-container h2 {
+        text-align: center;
+        color: #333;
+      }
 
-        .form-container label {
-            display: block;
-            text-align: left;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        .form-container input,
-        .form-container select,
-        .form-container textarea {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
+      .form-container label {
+        display: block;
+        text-align: left;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      .form-container input,
+      .form-container select,
+      .form-container textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
 
-        .form-container button {
-            margin-top: 15px;
-            width: 100%;
-            padding: 10px;
-            background-color: teal;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+      .form-container button {
+        margin-top: 15px;
+        width: 100%;
+        padding: 10px;
+        background-color: teal;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
 
-        .form-container button:hover {
-            background-color: darkcyan;
-            transform: scale(1.03);
-        }
+      .form-container button:hover {
+        background-color: darkcyan;
+        transform: scale(1.03);
+      }
 
-        #confirmation {
-            display: block;
-            text-align: center;
-            color: green;
-            font-weight: bold;
-            margin-top: 15px;
-        }
+      #confirmation {
+        display: block;
+        text-align: center;
+        color: green;
+        font-weight: bold;
+        margin-top: 15px;
+      }
+      #eventImage {
+        border: 2px solid black;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      #phoneMsg,
+      #feeDisplay,
+      #confirmMsg {
+        font-weight: bold;
+        text-align: center;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- Welcome Banner -->
     <div id="welcomeBanner">
-        <h2>Welcome Back, Community Member!</h2>
+      <h2>Welcome Back, Community Member!</h2>
 
-        <p class="highlight">
-            Thank you for visiting our Community Event Portal.
-        </p>
+      <p class="highlight">
+        Thank you for visiting our Community Event Portal.
+      </p>
 
-        <p>
-            Special Offer:
-            <span style="color: rgb(212, 23, 23); font-weight: bold;">
-                Register today and get 10% off on premium event passes!
-            </span>
-        </p>
+      <p>
+        Special Offer:
+        <span style="color: rgb(212, 23, 23); font-weight: bold">
+          Register today and get 10% off on premium event passes!
+        </span>
+      </p>
     </div>
     <!-- Image Gallery Section -->
     <section id="gallery">
-        <h2>Community Event Gallery</h2>
+      <h2>Community Event Gallery</h2>
 
-        <table class="gallery-table">
-            <tr>
-                <td>
-                    <img src="music_concert.jpeg"
-                        alt="Music Festival"
-                        title="Music Festival"
-                        title="Annual Music Festival"
-                        class="gallery-img">
-                    <p><b>Music Festival 2025</b><br>
-                    Community members enjoyed performances by local artists</p>
-                     
-                </td>
+      <table class="gallery-table">
+        <tr>
+          <td>
+            <img
+              src="music_concert.jpeg"
+              alt="Music Festival"
+              title="Annual Music Festival"
+              class="gallery-img"
+            />
+            <p>
+              <b>Music Festival 2025</b><br/>
+              Community members enjoyed performances by local artists</p>
+          </td>
 
-                <td>
-                    <img src="food_fest.jpeg"
-                        alt="Food Festival"
-                        title="Community Food Festival"
-                        alt="Food Fair"
-                        title="Community Food Fair"
-                        class="gallery-img">
-                    <p><b>Food Festival</b><br>
-                    Residents savored a wide range of local dishes</p>
-                    <p>
-                </td>
+          <td>
+            <img
+              src="food_fest.jpeg"
+              alt="Food Fair"
+              title="Community Food Fair"
+              class="gallery-img"
+            />
+            <p>
+              <b>Food Fair</b><br />
+              Residents savored a wide range of local dishes </p>
+          </td>
 
-                <td>
-                    <img src="tree_plantation.jpeg"
-                        alt="Tree Plantation Activity"
-                        alt="Tree Plantation Drive"
-                        title="Environmental Awareness Event"
-                        class="gallery-img">
-                    <p><b>Tree Plantation Drive</b><br>
-                    Community volunteers planted trees throughout the neighborhood</p>
-                     
-                </td>
-            </tr>
+          <td>
+            <img
+              src="tree_plantation.jpeg"
+              alt="Tree Plantation Drive"
+              title="Environmental Awareness Event"
+              class="gallery-img"
+            />
+            <p>
+              <b>Tree Plantation Drive</b><br />
+               Community volunteers planted trees throughout the neighborhood </p>
+          </td>
+        </tr>
 
-            <tr>
-                <td>
-                    <img src="sports_day.jpeg"
-                        alt="Sports Day"
-                        title="Annual Sports Competition"
-                        class="gallery-img">
-                    <p><b>Sports Day</b><br>
-                    People from the community took part in different games and activities</p>
-                </td>
+        <tr>
+          <td>
+            <img
+              src="sports_day.jpeg"
+              alt="Sports Day"
+              title="Annual Sports Competition"
+              class="gallery-img"
+            />
+            <p>
+              <b>Sports Day</b><br />
+              People from the community took part in different games and activities</p>
+          </td>
 
-                <td>
-                    <img src="health_care.jpeg"
-                        alt="Health Camp"
-                        title="Free Health Checkup Camp"
-                        class="gallery-img">
-                    <p><b>Health Camp</b><br>
-                    Free health checkups and awareness campaigns were organized for the public</p>
-                </td>
+          <td>
+            <img
+              src="health_care.jpeg"
+              alt="Health Camp"
+              title="Free Health Checkup Camp"
+              class="gallery-img"
+            />
+            <p>
+              <b>Health Camp</b><br />
+              Free health checkups and awareness campaigns were organized for the public</p>
+          </td>
 
-                <td>
-                    <img src="night_cult.jpeg"
-                        alt="Cultural Night"
-                        title="Community Cultural Celebration"
-                        class="gallery-img">
-                    <p><b>Cultural Night</b><br>
-                    Dance, music, and cultural events entertained the audience</p>
-                    
-                </td>
-            </tr>
-        </table>
+          <td>
+            <img
+              src="night_cult.jpeg"
+              alt="Cultural Night"
+              title="Community Cultural Celebration"
+              class="gallery-img"
+            />
+            <p>
+              <b>Cultural Night</b><br />
+               Dance, music, and cultural events entertained the audience</p>
+          </td>
+        </tr>
+      </table>
     </section>
     <!-- Navigation -->
     <nav>
-        <a href="#home">Home</a> |
-        <a href="#events">Events</a> |
-        <a href="#contact">Contact</a> |
-        <a href="help.html" target="_blank">Help</a>
+      <a href="#home">Home</a> | <a href="#events">Events</a> |
+      <a href="#contact">Contact</a> |
+      <a href="help.html" target="_blank">Help</a>
     </nav>
 
     <!-- Home Section -->
     <section id="home">
-        <h1>Welcome to Local Community Event Portal</h1>
-        <p>This is the home section of the portal.</p>
+      <h1>Welcome to Local Community Event Portal</h1>
+      <p>This is the home section of the portal.</p>
     </section>
 
     <!-- Events Section -->
     <section id="events">
-        <h2>Events</h2>
-        <p>Check out upcoming community events here.</p>
+      <h2>Events</h2>
+      <p>Check out upcoming community events here.</p>
 
-        <a href="#registration" class="register-btn">
-            Register Now
-        </a>
+      <a href="#registration" class="register-btn"> Register Now </a>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Email: community@example.com</p>
-        <p>Phone: +91 96754 24534</p>
+      <h2>Contact Us</h2>
+      <p>Email: community@example.com</p>
+      <p>Phone: +91 96754 24534</p>
     </section>
     <section id="registration">
-        <div class="form-container">
-            <h2>Event Registration Form</h2>
+      <div class="form-container">
+        <h2>Event Registration Form</h2>
 
-            <form onsubmit="showMessage(); return false;">
+        <form
+          onsubmit="
+            showMessage();
+            return false;
+          "
+        >
+          <label>Name</label>
+          <input type="text" placeholder="Enter your name" required autofocus />
 
-                <label>Name</label>
-                <input type="text" placeholder="Enter your name" required autofocus>
+          <label>Email</label>
+          <input type="email" placeholder="Enter your email" required />
 
-                <label>Email</label>
-                <input type="email" placeholder="Enter your email" required>
+          <label>Event Date</label>
+          <input type="date" required />
 
-                <label>Event Date</label>
-                <input type="date" required>
+          <label>Event Type</label>
+          <select required>
+            <option value="">Select Event</option>
+            <option>Music Festival</option>
+            <option>Food Fair</option>
+            <option>Sports Day</option>
+            <option>Health Camp</option>
+            <option>Cultural Night</option>
+          </select>
 
-                <label>Event Type</label>
-                <select required>
-                    <option value="">Select Event</option>
-                    <option>Music Festival</option>
-                    <option>Food Fair</option>
-                    <option>Sports Day</option>
-                    <option>Health Camp</option>
-                    <option>Cultural Night</option>
-                </select>
+          <label>Message</label>
+          <textarea placeholder="Enter your message" required></textarea>
 
-                <label>Message</label>
-                <textarea placeholder="Enter your message" required></textarea>
+          <button type="submit">Submit Registration</button>
 
-                <button type="submit">Submit Registration</button>
+          <output id="confirmation"></output>
+        </form>
+      </div>
+    </section>
+    <section id="feedback">
+      <div class="form-container">
+        <h2>Event Feedback Form</h2>
 
-                <output id="confirmation"></output>
-            </form>
-        </div>
+        <label>Phone Number</label>
+        <input
+          type="text"
+          id="phone"
+          placeholder="Enter 10-digit phone number"
+          onblur="validatePhone()"
+        />
+
+        <p id="phoneMsg"></p>
+        <label>Select Event</label>
+        <select id="eventSelect" onchange="showFeeAndImage()">
+          <option value="">Select Event</option>
+          <option value="200">Music Festival</option>
+          <option value="150">Food Fair</option>
+          <option value="100">Sports Day</option>
+          <option value="180">Health Camp</option>
+          <option value="250">Cultural Night</option>
+        </select>
+
+        <p id="feeDisplay"></p>
+
+        <label>Feedback</label>
+        <textarea
+          id="feedbackText"
+          rows="5"
+          placeholder="Enter your feedback"
+          onkeyup="countChars()"
+        ></textarea>
+
+        <p>Characters Typed: <span id="charCount">0</span></p>
+
+        <img
+          src="music_concert.jpeg"
+          id="eventImage"
+          width="200"
+          ondblclick="enlargeImage()"
+          alt="Event Image"
+        />
+
+        <br /><br />
+
+        <button onclick="submitFeedback()">Submit Feedback</button>
+
+        <p id="confirmMsg"></p>
+      </div>
     </section>
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Local Community Event Portal</p>
+      <p>&copy; 2026 Local Community Event Portal</p>
     </footer>
-
-</body>
-<script>
+  </body>
+  <script>
     function showMessage() {
-        document.getElementById("confirmation").innerHTML =
+      document.getElementById("confirmation").innerHTML =
         "Registration Successful! Thank you for registering.";
     }
-</script>
+
+    function validatePhone() {
+      let phone = document.getElementById("phone").value;
+      let msg = document.getElementById("phoneMsg");
+
+      if (/^[0-9]{10}$/.test(phone)) {
+        msg.innerHTML = "✓ Valid Phone Number";
+        msg.style.color = "green";
+      } else {
+        msg.innerHTML = "Enter a valid 10-digit phone number";
+        msg.style.color = "red";
+      }
+    }
+
+    function showFee() {
+      let fee = document.getElementById("eventSelect").value;
+
+      if (fee !== "") {
+        document.getElementById("feeDisplay").innerHTML = "Event Fee: ₹" + fee;
+      }
+    }
+
+    function showFeeAndImage() {
+      let select = document.getElementById("eventSelect");
+      let fee = select.value;
+      let eventName = select.options[select.selectedIndex].text;
+
+      document.getElementById("feeDisplay").innerHTML = "Event Fee: ₹" + fee;
+
+      let img = document.getElementById("eventImage");
+
+      switch (eventName) {
+        case "Music Festival":
+          img.src = "music_concert.jpeg";
+          break;
+
+        case "Food Fair":
+          img.src = "food_fest.jpeg";
+          break;
+
+        case "Sports Day":
+          img.src = "sports_day.jpeg";
+          break;
+
+        case "Health Camp":
+          img.src = "health_care.jpeg";
+          break;
+
+        case "Cultural Night":
+          img.src = "night_cult.jpeg";
+          break;
+
+        default:
+          img.src = "music_concert.jpeg";
+      }
+    }
+
+    function enlargeImage() {
+      let img = document.getElementById("eventImage");
+
+      if (img.style.width === "450px") img.style.width = "250px";
+      else img.style.width = "450px";
+    }
+
+    function submitFeedback() {
+      document.getElementById("confirmMsg").innerHTML =
+        "✓ Feedback Submitted Successfully!";
+      document.getElementById("confirmMsg").style.color = "green";
+    }
+
+    function enlargeImage() {
+      let img = document.getElementById("eventImage");
+
+      if (img.style.width === "400px") {
+        img.style.width = "200px";
+      } else {
+        img.style.width = "400px";
+      }
+    }
+
+    function countChars() {
+      let count = document.getElementById("feedbackText").value.length;
+      document.getElementById("charCount").innerHTML = count;
+    }
+  </script>
 </html>
