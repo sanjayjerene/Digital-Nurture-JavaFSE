@@ -289,8 +289,8 @@
           <label>Event Date</label>
           <input type="date" required />
 
-          <label>Event Type</label>
-          <select required>
+           <label>Event Type</label>
+          <select id="preferredEvent" onchange="savePreference()" required>
             <option value="">Select Event</option>
             <option>Music Festival</option>
             <option>Food Fair</option>
@@ -303,6 +303,9 @@
           <textarea placeholder="Enter your message" required></textarea>
 
           <button type="submit">Submit Registration</button>
+<button type="button" onclick="clearPreferences()">
+    Clear Preferences
+</button>
 
           <output id="confirmation"></output>
         </form>
@@ -476,5 +479,45 @@
         return "You have unfinished form data.";
       }
     };
+    function savePreference() {
+    let selectedEvent =
+        document.getElementById("preferredEvent").value;
+
+    localStorage.setItem(
+        "preferredEvent",
+        selectedEvent
+    );
+}
+
+window.onload = function () {
+
+    let savedEvent =
+        localStorage.getItem("preferredEvent");
+
+    if (savedEvent) {
+        document.getElementById(
+            "preferredEvent"
+        ).value = savedEvent;
+    }
+
+    sessionStorage.setItem(
+    "lastVisit",
+    new Date()
+);
+};
+function clearPreferences() {
+
+    localStorage.clear();
+
+    sessionStorage.clear();
+
+    alert(
+        "Preferences cleared successfully!"
+    );
+
+    document.getElementById(
+        "preferredEvent"
+    ).value = "";
+}
   </script>
 </html>
