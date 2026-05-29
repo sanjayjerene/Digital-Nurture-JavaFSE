@@ -387,19 +387,24 @@
   </body>
   <script>
     function showMessage() {
+      console.log("Registration Form Submitted");
+
       document.getElementById("confirmation").innerHTML =
-        "Registration Successful! Thank you for registering.";
+        "Registration Successful";
     }
 
-    function validatePhone() {
+function validatePhone() {
       let phone = document.getElementById("phone").value;
+
+      console.log("Phone Entered:", phone);
+
       let msg = document.getElementById("phoneMsg");
 
       if (/^[0-9]{10}$/.test(phone)) {
-        msg.innerHTML = "✓ Valid Phone Number";
+        msg.innerHTML = "Valid Phone Number";
         msg.style.color = "green";
       } else {
-        msg.innerHTML = "✗ Enter a valid 10-digit phone number";
+        msg.innerHTML = "Enter a valid 10-digit phone number";
         msg.style.color = "red";
       }
     }
@@ -456,7 +461,7 @@
 
     function submitFeedback() {
       document.getElementById("confirmMsg").innerHTML =
-        "✓ Feedback Submitted Successfully!";
+        "Feedback Submitted Successfully!";
       document.getElementById("confirmMsg").style.color = "green";
     }
 
