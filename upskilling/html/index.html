@@ -371,6 +371,15 @@
 
       <p id="videoMsg"></p>
     </section>
+     <section id="location">
+      <div class="form-container">
+        <h2>Nearby Event Locator</h2>
+
+        <button onclick="findLocation()">Find Nearby Events</button>
+
+        <p id="locationResult"></p>
+      </div>
+    </section>
     <!-- Footer -->
     <footer>
       <p>&copy; 2026 Local Community Event Portal</p>
@@ -519,5 +528,54 @@ function clearPreferences() {
         "preferredEvent"
     ).value = "";
 }
+function findLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          showPosition,
+
+          showError,
+
+          {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0,
+          },
+        );
+      } else {
+        document.getElementById("locationResult").innerHTML =
+          "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function showPosition(position) {
+      document.getElementById("locationResult").innerHTML =
+        "Latitude: " +
+        position.coords.latitude +
+        "<br>Longitude: " +
+        position.coords.longitude;
+    }
+
+    function showError(error) {
+      let message = "";
+
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          message = "Location access denied by user.";
+          break;
+
+        case error.POSITION_UNAVAILABLE:
+          message = "Location information unavailable.";
+          break;
+
+        case error.TIMEOUT:
+          message = "Request timed out.";
+          break;
+
+        default:
+          message = "Unknown error occurred.";
+      }
+
+      document.getElementById("locationResult").innerHTML = message;
+    }
   </script>
 </html>
