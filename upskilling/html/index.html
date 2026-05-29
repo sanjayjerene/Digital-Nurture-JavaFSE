@@ -17,10 +17,27 @@
 
         /* Highlight Class */
         .highlight {
-            background-color: rgb(255, 128, 0);
+            background-color: rgb(255, 111, 0);
             color: black;
             font-weight: bold;
             padding: 2px 5px;
+        }
+        .gallery-img {
+            width: 200px;
+            height: 140px;
+            border: 3px solid #333;
+            border-radius: 8px;
+            padding: 3px;
+        }
+
+        .gallery-table {
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        .gallery-table td {
+            padding: 10px;
+            text-align: center;
         }
     </style>
 </head>
@@ -37,11 +54,74 @@
         <p>
             Special Offer:
             <span style="color: rgb(212, 23, 23); font-weight: bold;">
-                Register today and get 20% off on premium event passes!
+                Register today and get 10% off on premium event passes!
             </span>
         </p>
     </div>
+    <!-- Image Gallery Section -->
+    <section id="gallery">
+        <h2>Community Event Gallery</h2>
 
+        <table class="gallery-table">
+            <tr>
+                <td>
+                    <img src="music_concert.jpeg"
+                        alt="Music Festival"
+                        title="Music Festival"
+                        class="gallery-img">
+                    <p><b>Music Festival 2025</b><br>
+                    Community members enjoyed performances by local artists</p>
+                </td>
+
+                <td>
+                    <img src="food_fest.jpeg"
+                        alt="Food Festival"
+                        title="Community Food Festival"
+                        class="gallery-img">
+                    <p><b>Food Festival</b><br>
+                    Residents savored a wide range of local dishes</p>
+                </td>
+
+                <td>
+                    <img src="tree_plantation.jpeg"
+                        alt="Tree Plantation Activity"
+                        title="Environmental Awareness Event"
+                        class="gallery-img">
+                    <p><b>Tree Plantation Drive</b><br>
+                    Community volunteers planted trees throughout the neighborhood</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <img src="sports_day.jpeg"
+                        alt="Sports Day"
+                        title="Annual Sports Competition"
+                        class="gallery-img">
+                    <p><b>Sports Day</b><br>
+                    People from the community took part in different games and activities</p>
+                </td>
+
+                <td>
+                    <img src="health_care.jpeg"
+                        alt="Health Camp"
+                        title="Free Health Checkup Camp"
+                        class="gallery-img">
+                    <p><b>Health Camp</b><br>
+                    Free health checkups and awareness campaigns were organized for the public</p>
+                </td>
+
+                <td>
+                    <img src="night_cult.jpeg"
+                        alt="Cultural Night"
+                        title="Community Cultural Celebration"
+                        class="gallery-img">
+                    <p><b>Cultural Night</b><br>
+                    Dance, music, and cultural events entertained the audience</p>
+                </td>
+            </tr>
+        </table>
+    </section>
     <!-- Navigation -->
     <nav>
         <a href="#home">Home</a> |
