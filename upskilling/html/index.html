@@ -17,7 +17,7 @@
 
         /* Highlight Class */
         .highlight {
-            background-color: rgb(255, 111, 0);
+            background-color: rgb(255, 145, 0);
             color: black;
             font-weight: bold;
             padding: 2px 5px;
@@ -28,6 +28,11 @@
             border: 3px solid #333;
             border-radius: 8px;
             padding: 3px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.1);
         }
 
         .gallery-table {
@@ -38,6 +43,77 @@
         .gallery-table td {
             padding: 10px;
             text-align: center;
+        }
+        .register-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: teal;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .register-btn:hover {
+            background-color: darkcyan;
+            transform: scale(1.1);
+        }
+        .form-container {
+            width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-container label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .form-container input,
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            background-color: teal;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: darkcyan;
+            transform: scale(1.03);
+        }
+
+        #confirmation {
+            display: block;
+            text-align: center;
+            color: green;
+            font-weight: bold;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -67,28 +143,28 @@
                 <td>
                     <img src="music_concert.jpeg"
                         alt="Music Festival"
-                        title="Music Festival"
+                        title="Annual Music Festival"
                         class="gallery-img">
                     <p><b>Music Festival 2025</b><br>
-                    Community members enjoyed performances by local artists</p>
+                     Community members enjoyed performances by local artists</p>
                 </td>
 
                 <td>
                     <img src="food_fest.jpeg"
-                        alt="Food Festival"
-                        title="Community Food Festival"
+                        alt="Food Fair"
+                        title="Community Food Fair"
                         class="gallery-img">
-                    <p><b>Food Festival</b><br>
-                    Residents savored a wide range of local dishes</p>
+                    <p><b>Food Fair</b><br>
+                     Residents savored a wide range of local dishes</p>
                 </td>
 
                 <td>
                     <img src="tree_plantation.jpeg"
-                        alt="Tree Plantation Activity"
+                        alt="Tree Plantation Drive"
                         title="Environmental Awareness Event"
                         class="gallery-img">
                     <p><b>Tree Plantation Drive</b><br>
-                    Community volunteers planted trees throughout the neighborhood</p>
+                     Community volunteers planted trees throughout the neighborhood</p>
                 </td>
             </tr>
 
@@ -117,7 +193,7 @@
                         title="Community Cultural Celebration"
                         class="gallery-img">
                     <p><b>Cultural Night</b><br>
-                    Dance, music, and cultural events entertained the audience</p>
+                     Dance, music, and cultural events entertained the audience</p>
                 </td>
             </tr>
         </table>
@@ -140,19 +216,62 @@
     <section id="events">
         <h2>Events</h2>
         <p>Check out upcoming community events here.</p>
+
+        <a href="#registration" class="register-btn">
+            Register Now
+        </a>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Us</h2>
         <p>Email: community@example.com</p>
-        <p>Phone: +91 96754 24534</p>
+        <p>Phone:+91 96754 24534</p>
     </section>
+    <section id="registration">
+        <div class="form-container">
+            <h2>Event Registration Form</h2>
 
+            <form onsubmit="showMessage(); return false;">
+
+                <label>Name</label>
+                <input type="text" placeholder="Enter your name" required autofocus>
+
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email" required>
+
+                <label>Event Date</label>
+                <input type="date" required>
+
+                <label>Event Type</label>
+                <select required>
+                    <option value="">Select Event</option>
+                    <option>Music Festival</option>
+                    <option>Food Fair</option>
+                    <option>Sports Day</option>
+                    <option>Health Camp</option>
+                    <option>Cultural Night</option>
+                </select>
+
+                <label>Message</label>
+                <textarea placeholder="Enter your message" required></textarea>
+
+                <button type="submit">Submit Registration</button>
+
+                <output id="confirmation"></output>
+            </form>
+        </div>
+    </section>
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Local Community Event Portal</p>
     </footer>
 
 </body>
+<script>
+    function showMessage() {
+        document.getElementById("confirmation").innerHTML =
+        "Registration Successful! Thank you for registering.";
+    }
+</script>
 </html>
