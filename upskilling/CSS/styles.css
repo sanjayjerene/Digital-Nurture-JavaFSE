@@ -327,3 +327,24 @@ li {
   padding: 5px;
   margin: 5px;
 }
+/* Gallery Table Styling */
+.gallery-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+/* Gallery Table Cells */
+.gallery-table td {
+  padding: 20px;
+  border: 1px solid #cccccc;
+}
+
+/* Zebra Striping */
+.gallery-table tr:nth-child(odd) {
+  background-color: #ce9b9b;
+}
+
+.gallery-table tr:nth-child(even) {
+  background-color: #aed5f9;
+}
