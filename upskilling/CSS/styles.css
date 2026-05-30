@@ -348,3 +348,29 @@ li {
 .gallery-table tr:nth-child(even) {
   background-color: #aed5f9;
 }
+/* Event Card Styling */
+.eventCard {
+  border: 2px solid #333;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+/* Form Field Highlight */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid orange;
+  outline-offset: 2px;
+}
+
+/* Hidden Element Example */
+.hidden-box {
+  visibility: hidden;
+}
+
+/* Display None Example */
+.none-box {
+  display: none;
+}
