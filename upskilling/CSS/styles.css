@@ -269,7 +269,7 @@ h3 {
 p {
   font-size: 16px;
   font-weight: 400;
-  text-align: justify;
+  text-align: center;
   line-height: 1.8;
   letter-spacing: 0.5px;
 }
@@ -278,4 +278,52 @@ p {
 .highlight {
   font-weight: bold;
   text-transform: uppercase;
+}
+/* Navigation Menu Styling */
+nav ul {
+  list-style-type: none;
+  list-style-position: inside;
+  padding: 0;
+  margin: 0;
+}
+
+/* Navigation List Items */
+nav li {
+  display: inline-block;
+  padding: 10px;
+  margin: 5px;
+}
+
+/* Unvisited Links */
+a:link {
+  color: blue;
+  text-decoration: none;
+}
+
+/* Visited Links */
+a:visited {
+  color: purple;
+}
+
+/* Mouse Hover Effect */
+a:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+/* Active Link */
+a:active {
+  color: green;
+}
+
+/* General List Styling */
+ul {
+  list-style-type: square;
+  list-style-position: outside;
+}
+
+/* List Item Spacing */
+li {
+  padding: 5px;
+  margin: 5px;
 }
