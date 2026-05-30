@@ -170,7 +170,7 @@ h2 {
 
 /* ID Selector - Main Header Banner */
 #mainHeader {
-  background-color: lightblue;
+  background-color: blue;
   color: white;
   padding: 15px;
   text-align: center;
@@ -192,4 +192,44 @@ h3,
 p {
   color: #333;
   font-family: Arial, sans-serif;
+}
+/* Page Background with Fallback Color */
+body {
+  background-color: #f4f4f4;
+  background-image: url("bgimage.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+ 
+}
+
+/* Welcome Banner using HEX Colors */
+#welcomeBanner {
+  background-color: #1e90ff;
+  color: #ffffff;
+}
+
+/* Form Container using RGBA Background */
+.form-container {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Gradient Header Styling */
+h2 {
+  background: linear-gradient(to right, #1e90ff, #00bfff);
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Navigation Bar Styling */
+nav {
+  background-color: #003366;
+  padding: 10px;
+}
+
+/* Navigation Links */
+nav a {
+  color: #ffffff;
+  text-decoration: none;
 }
