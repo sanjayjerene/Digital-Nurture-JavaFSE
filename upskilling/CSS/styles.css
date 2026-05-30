@@ -385,3 +385,68 @@ textarea:focus {
   text-align: justify;
   line-height: 1.6;
 }
+/* Flexible Layout Using Percentages */
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Responsive Form Container */
+.form-container {
+  width: 80%;
+  max-width: 500px;
+}
+
+/* Responsive Images */
+.gallery-img {
+  width: 20vw;
+  height: auto;
+}
+
+/* Bonus: Flexbox Layout for Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Media Query for Screens Smaller than 768px */
+@media screen and (max-width: 768px) {
+
+  /* Stack Navigation Links Vertically */
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Reduce Font Sizes */
+  h1 {
+    font-size: 6vw;
+  }
+
+  h2 {
+    font-size: 5vw;
+  }
+
+  p {
+    font-size: 3.5vw;
+  }
+
+  /* Reduce Image Sizes */
+  .gallery-img {
+    width: 40vw;
+    height: auto;
+  }
+
+  /* Flexible Form Width */
+  .form-container {
+    width: 95%;
+  }
+
+  /* Responsive Video */
+  #promoVideo {
+    width: 90%;
+    height: auto;
+  }
+}
