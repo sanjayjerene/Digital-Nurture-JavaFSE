@@ -1,17 +1,155 @@
-/* Welcome banner style */
+/* Welcome Banner Styling */
 #welcomeBanner {
-    background-color: blue;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    border-radius: 5px;
-    margin-bottom: 20px;
+  background-color: blue;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
-/* Highlight text style */
+/* Highlight Class */
 .highlight {
-    background-color: rgb(255, 115, 0);
-    color: black;
-    font-weight: bold;
-    padding: 2px 5px;
+  background-color: darkorange;
+  color: black;
+  font-weight: bold;
+  padding: 2px 5px;
+}
+
+/* Gallery Image Styling */
+.gallery-img {
+  width: 200px;
+  height: 140px;
+  border: 3px solid #333;
+  border-radius: 8px;
+  padding: 3px;
+  transition: transform 0.3s ease;
+}
+
+/* Gallery Image Hover Effect */
+.gallery-img:hover {
+  transform: scale(1.1);
+}
+
+/* Gallery Table Styling */
+.gallery-table {
+  margin: auto;
+  border-collapse: collapse;
+}
+
+/* Gallery Table Cell Styling */
+.gallery-table td {
+  padding: 10px;
+  text-align: center;
+}
+
+/* Registration Button Styling */
+.register-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: teal;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Registration Button Hover Effect */
+.register-btn:hover {
+  background-color: darkcyan;
+  transform: scale(1.1);
+}
+
+/* Form Container Styling */
+.form-container {
+  width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Form Heading Styling */
+.form-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+/* Form Label Styling */
+.form-container label {
+  display: block;
+  text-align: left;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Form Input, Select and Textarea Styling */
+.form-container input,
+.form-container select,
+.form-container textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Form Button Styling */
+.form-container button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background-color: teal;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Form Button Hover Effect */
+.form-container button:hover {
+  background-color: darkcyan;
+  transform: scale(1.03);
+}
+
+/* Confirmation Message Styling */
+#confirmation {
+  display: block;
+  text-align: center;
+  color: green;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+/* Event Image Styling */
+#eventImage {
+  border: 2px solid black;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+/* Phone Validation, Fee Display and Confirmation Message Styling */
+#phoneMsg,
+#feeDisplay,
+#confirmMsg {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Video Invitation Section Styling */
+#videoInvite {
+  text-align: center;
+  margin: 30px;
+}
+
+/* Video Message Styling */
+#videoMsg {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
 }
