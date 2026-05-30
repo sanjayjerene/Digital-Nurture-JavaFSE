@@ -196,7 +196,7 @@ p {
 /* Page Background with Fallback Color */
 body {
   background-color: #f4f4f4;
-  background-image: url("bgimage.jpeg");
+  background-image: url("bgimage.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
