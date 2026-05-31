@@ -1,217 +1,200 @@
 console.log("Welcome to the Community Portal");
 
 window.onload = function () {
-    alert("Community Portal page has fully loaded!");
+  alert("Community Portal page has fully loaded!");
 };
+
 function showMessage() {
-      console.log("Registration Form Submitted");
+  console.log("Registration Form Submitted");
 
-      document.getElementById("confirmation").innerHTML =
-        "Registration Successful";
-    }
-
+  document.getElementById("confirmation").innerHTML =
+    "Registration Successful! Thank you for registering.";
+}
 function validatePhone() {
-      let phone = document.getElementById("phone").value;
+  let phone = document.getElementById("phone").value;
 
-      console.log("Phone Entered:", phone);
+  console.log("Phone Entered:", phone);
 
-      let msg = document.getElementById("phoneMsg");
+  let msg = document.getElementById("phoneMsg");
 
-      if (/^[0-9]{10}$/.test(phone)) {
-        msg.innerHTML = "Valid Phone Number";
-        msg.style.color = "green";
-      } else {
-        msg.innerHTML = "Enter a valid 10-digit phone number";
-        msg.style.color = "red";
-      }
-    }
+  if (/^[0-9]{10}$/.test(phone)) {
+    msg.innerHTML = "✓ Valid Phone Number";
+    msg.style.color = "green";
+  } else {
+    msg.innerHTML = "✗ Enter a valid 10-digit phone number";
+    msg.style.color = "red";
+  }
+}
 
-    function showFee() {
-      let fee = document.getElementById("eventSelect").value;
+function showFee() {
+  let fee = document.getElementById("eventSelect").value;
 
-      if (fee !== "") {
-        document.getElementById("feeDisplay").innerHTML = "Event Fee: ₹" + fee;
-      }
-    }
+  if (fee !== "") {
+    document.getElementById("feeDisplay").innerHTML = "Event Fee: ₹" + fee;
+  }
+}
 
-    function showFeeAndImage() {
-      let select = document.getElementById("eventSelect");
-      let fee = select.value;
-      let eventName = select.options[select.selectedIndex].text;
+function showFeeAndImage() {
+  let select = document.getElementById("eventSelect");
+  let fee = select.value;
+  let eventName = select.options[select.selectedIndex].text;
 
-      document.getElementById("feeDisplay").innerHTML = "Event Fee: ₹" + fee;
+  document.getElementById("feeDisplay").innerHTML = "Event Fee: ₹" + fee;
 
-      let img = document.getElementById("eventImage");
+  let img = document.getElementById("eventImage");
 
-      switch (eventName) {
-        case "Music Festival":
-          img.src = "music_concert.jpeg";
-          break;
+  switch (eventName) {
+    case "Music Festival":
+      img.src = "music.avif";
+      break;
 
-        case "Food Fair":
-          img.src = "food_fest.jpeg";
-          break;
+    case "Food Fair":
+      img.src = "food.avif";
+      break;
 
-        case "Sports Day":
-          img.src = "sports_day.jpeg";
-          break;
+    case "Sports Day":
+      img.src = "sports.avif";
+      break;
 
-        case "Health Camp":
-          img.src = "health_care.jpeg";
-          break;
+    case "Health Camp":
+      img.src = "medical.avif";
+      break;
 
-        case "Cultural Night":
-          img.src = "night_cult.jpeg";
-          break;
+    case "Cultural Night":
+      img.src = "night.avif";
+      break;
 
-        default:
-          img.src = "music_concert.jpeg";
-      }
-    }
+    default:
+      img.src = "music.avif";
+  }
+}
 
-    function enlargeImage() {
-      let img = document.getElementById("eventImage");
+function enlargeImage() {
+  let img = document.getElementById("eventImage");
 
-      if (img.style.width === "450px") img.style.width = "250px";
-      else img.style.width = "450px";
-    }
+  if (img.style.width === "450px") img.style.width = "250px";
+  else img.style.width = "450px";
+}
 
-    function submitFeedback() {
-      document.getElementById("confirmMsg").innerHTML =
-        "Feedback Submitted Successfully!";
-      document.getElementById("confirmMsg").style.color = "green";
-    }
+function submitFeedback() {
+  document.getElementById("confirmMsg").innerHTML =
+    "✓ Feedback Submitted Successfully!";
+  document.getElementById("confirmMsg").style.color = "green";
+}
 
-    function enlargeImage() {
-      let img = document.getElementById("eventImage");
+function enlargeImage() {
+  let img = document.getElementById("eventImage");
 
-      if (img.style.width === "400px") {
-        img.style.width = "200px";
-      } else {
-        img.style.width = "400px";
-      }
-    }
+  if (img.style.width === "400px") {
+    img.style.width = "200px";
+  } else {
+    img.style.width = "400px";
+  }
+}
 
-    function countChars() {
-      let count = document.getElementById("feedbackText").value.length;
-      document.getElementById("charCount").innerHTML = count;
-    }
+function countChars() {
+  let count = document.getElementById("feedbackText").value.length;
+  document.getElementById("charCount").innerHTML = count;
+}
 
-    function videoReady() {
-      document.getElementById("videoMsg").innerHTML = "✅ Video ready to play";
-    }
+function videoReady() {
+  document.getElementById("videoMsg").innerHTML = "✅ Video ready to play";
+}
 
-    window.onbeforeunload = function () {
-      let name = document.getElementById("name").value;
-      let phone = document.getElementById("phone").value;
-      let feedback = document.getElementById("feedbackText").value;
+window.onbeforeunload = function () {
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let feedback = document.getElementById("feedbackText").value;
 
-      if (name || phone || feedback) {
-        return "You have unfinished form data.";
-      }
-    };
-    function savePreference() {
-    let selectedEvent =
-        document.getElementById("preferredEvent").value;
+  if (name || phone || feedback) {
+    return "You have unfinished form data.";
+  }
+};
+function savePreference() {
+  let selectedEvent = document.getElementById("preferredEvent").value;
 
-    localStorage.setItem(
-        "preferredEvent",
-        selectedEvent
-    );
+  localStorage.setItem("preferredEvent", selectedEvent);
 }
 
 window.onload = function () {
+  let savedEvent = localStorage.getItem("preferredEvent");
 
-    let savedEvent =
-        localStorage.getItem("preferredEvent");
+  if (savedEvent) {
+    document.getElementById("preferredEvent").value = savedEvent;
+  }
 
-    if (savedEvent) {
-        document.getElementById(
-            "preferredEvent"
-        ).value = savedEvent;
-    }
-
-    sessionStorage.setItem(
-    "lastVisit",
-    new Date()
-);
+  sessionStorage.setItem("lastVisit", new Date());
 };
 function clearPreferences() {
+  localStorage.clear();
 
-    localStorage.clear();
+  sessionStorage.clear();
 
-    sessionStorage.clear();
+  alert("Preferences cleared successfully!");
 
-    alert(
-        "Preferences cleared successfully!"
-    );
-
-    document.getElementById(
-        "preferredEvent"
-    ).value = "";
+  document.getElementById("preferredEvent").value = "";
 }
 function findLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          showPosition,
+  console.log("Find Nearby Events button clicked");
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      showPosition,
 
-          showError,
+      showError,
 
-          {
-            enableHighAccuracy: true,
-            timeout: 10000,
-            maximumAge: 0,
-          },
-        );
-      } else {
-        document.getElementById("locationResult").innerHTML =
-          "Geolocation is not supported by this browser.";
-      }
-    }
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0,
+      },
+    );
+  } else {
+    document.getElementById("locationResult").innerHTML =
+      "Geolocation is not supported by this browser.";
+  }
+}
 
-    function showPosition(position) {
-      document.getElementById("locationResult").innerHTML =
-        "Latitude: " +
-        position.coords.latitude +
-        "<br>Longitude: " +
-        position.coords.longitude;
-    }
+function showPosition(position) {
+  document.getElementById("locationResult").innerHTML =
+    "Latitude: " +
+    position.coords.latitude +
+    "<br>Longitude: " +
+    position.coords.longitude;
+}
 
-    function showError(error) {
-      let message = "";
+function showError(error) {
+  let message = "";
 
-      switch (error.code) {
-        case error.PERMISSION_DENIED:
-          message = "Location access denied by user.";
-          break;
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      message = "Location access denied by user.";
+      break;
 
-        case error.POSITION_UNAVAILABLE:
-          message = "Location information unavailable.";
-          break;
+    case error.POSITION_UNAVAILABLE:
+      message = "Location information unavailable.";
+      break;
 
-        case error.TIMEOUT:
-          message = "Request timed out.";
-          break;
+    case error.TIMEOUT:
+      message = "Request timed out.";
+      break;
 
-        default:
-          message = "Unknown error occurred.";
-      }
+    default:
+      message = "Unknown error occurred.";
+  }
 
-      document.getElementById("locationResult").innerHTML = message;
-    }
-    // Event Details using Data Types
+  document.getElementById("locationResult").innerHTML = message;
+}
+
 const eventName = "Music Festival";
 const eventDate = "2026-06-15";
 let availableSeats = 100;
 
-// Display Event Information using Template Literals
 let eventInfo = `Event: ${eventName}
 Date: ${eventDate}
 Available Seats: ${availableSeats}`;
 
 console.log(eventInfo);
 
-// Registration Function using -- Operator
 function registerParticipant() {
   availableSeats--;
 
@@ -220,7 +203,7 @@ function registerParticipant() {
 
   alert(`Registration Successful!\nRemaining Seats: ${availableSeats}`);
 }
-// Event List
+
 const events = [
   {
     name: "Music Festival",
@@ -244,7 +227,6 @@ const events = [
   },
 ];
 
-// Display Only Upcoming Events with Available Seats
 function displayEvents() {
   const eventList = document.getElementById("eventList");
   eventList.innerHTML = "";
@@ -254,7 +236,6 @@ function displayEvents() {
   events.forEach((event) => {
     const eventDate = new Date(event.date);
 
-    // if-else condition
     if (eventDate > today && event.seats > 0) {
       const li = document.createElement("li");
       li.innerHTML = `${event.name} - ${event.date} - Seats: ${event.seats}`;
@@ -265,7 +246,6 @@ function displayEvents() {
   });
 }
 
-// Registration with Error Handling
 function registerForEvent(eventName) {
   try {
     const event = events.find((e) => e.name === eventName);
@@ -291,8 +271,8 @@ function registerForEvent(eventName) {
   }
 }
 
-// Run when page loads
 window.addEventListener("load", displayEvents);
+
 let communityEvents = [
   {
     name: "Music Festival",
@@ -350,27 +330,20 @@ function displayFilteredEvents(events) {
   console.log("Filtered Events:");
 
   events.forEach((event) => {
-    console.log(
-      `${event.name} | ${event.category} | Seats: ${event.seats}`
-    );
+    console.log(`${event.name} | ${event.category} | Seats: ${event.seats}`);
   });
 }
-
 function createRegistrationTracker(category) {
   let totalRegistrations = 0;
 
   return function () {
     totalRegistrations++;
 
-    console.log(
-      `${category} Registrations: ${totalRegistrations}`,
-    );
+    console.log(`${category} Registrations: ${totalRegistrations}`);
   };
 }
 
-const entertainmentTracker =
-  createRegistrationTracker("Entertainment");
-
+const entertainmentTracker = createRegistrationTracker("Entertainment");
 
 addEvent("Cultural Night", "Entertainment", 40);
 
@@ -380,10 +353,8 @@ entertainmentTracker();
 entertainmentTracker();
 entertainmentTracker();
 
-filterEventsByCategory(
-  "Entertainment",
-  displayFilteredEvents
-);
+filterEventsByCategory("Entertainment", displayFilteredEvents);
+
 class Event {
   constructor(name, category, seats) {
     this.name = name;
@@ -400,17 +371,9 @@ Event.prototype.checkAvailability = function () {
   }
 };
 
-const event1 = new Event(
-  "Music Festival",
-  "Entertainment",
-  50,
-);
+const event1 = new Event("Music Festival", "Entertainment", 50);
 
-const event2 = new Event(
-  "Sports Day",
-  "Sports",
-  0,
-);
+const event2 = new Event("Sports Day", "Sports", 0);
 
 console.log(event1.checkAvailability());
 console.log(event2.checkAvailability());
@@ -419,6 +382,7 @@ console.log("Event 1 Details:");
 Object.entries(event1).forEach(([key, value]) => {
   console.log(`${key}: ${value}`);
 });
+
 let communityEventsArray = [
   {
     name: "Music Festival",
@@ -453,14 +417,13 @@ const musicEvents = communityEventsArray.filter(
 
 console.log("Music Events:");
 console.log(musicEvents);
-
-// Use .map() to format display cards
 const displayCards = communityEventsArray.map(
   (event) => `Workshop on ${event.name}`,
 );
 
 console.log("Formatted Display Cards:");
 displayCards.forEach((card) => console.log(card));
+
 const domEvents = [
   {
     name: "Music Festival",
@@ -533,7 +496,6 @@ renderEvents();
 document
   .querySelector("#categoryFilter")
   .addEventListener("change", function () {
-
     let category = this.value;
 
     if (category === "All") {
@@ -546,26 +508,18 @@ document
       renderEvents(filteredEvents);
     }
   });
-document
-  .querySelector("#searchBox")
-  .addEventListener("keydown", function (e) {
+document.querySelector("#searchBox").addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    let searchText = this.value.toLowerCase();
 
-    if (e.key === "Enter") {
+    let searchResults = domEvents.filter((event) =>
+      event.name.toLowerCase().includes(searchText),
+    );
 
-      let searchText =
-        this.value.toLowerCase();
+    renderEvents(searchResults);
+  }
+});
 
-      let searchResults =
-        domEvents.filter(event =>
-          event.name
-            .toLowerCase()
-            .includes(searchText)
-        );
-
-      renderEvents(searchResults);
-    }
-  });
-renderEvents();
 function fetchEvents() {
   document.getElementById("loading").style.display = "block";
 
@@ -629,20 +583,17 @@ async function fetchEventsAsync() {
     console.error(error);
   }
 }
+
 const form = document.getElementById("registrationForm");
 
 form.addEventListener("submit", function (event) {
-
   event.preventDefault();
 
-  const name =
-    form.elements["name"].value.trim();
+  const name = form.elements["name"].value.trim();
 
-  const email =
-    form.elements["email"].value.trim();
+  const email = form.elements["email"].value.trim();
 
-  const selectedEvent =
-    form.elements["event"].value;
+  const selectedEvent = form.elements["event"].value;
 
   document.getElementById("nameError").innerHTML = "";
   document.getElementById("emailError").innerHTML = "";
@@ -651,30 +602,60 @@ form.addEventListener("submit", function (event) {
   let isValid = true;
 
   if (name === "") {
-    document.getElementById("nameError").innerHTML =
-      "Name is required";
+    document.getElementById("nameError").innerHTML = "Name is required";
     isValid = false;
   }
 
   if (!email.includes("@")) {
-    document.getElementById("emailError").innerHTML =
-      "Enter valid email";
+    document.getElementById("emailError").innerHTML = "Enter valid email";
     isValid = false;
   }
 
   if (selectedEvent === "") {
-    document.getElementById("eventError").innerHTML =
-      "Select an event";
+    document.getElementById("eventError").innerHTML = "Select an event";
     isValid = false;
   }
 
   if (isValid) {
+    const userData = {
+      name: name,
+      email: email,
+      event: selectedEvent,
+    };
 
-    document.getElementById("confirmation").innerHTML =
-      `Registration Successful for ${selectedEvent}`;
+    document.getElementById("serverMessage").innerHTML =
+      "Sending registration...";
+    setTimeout(() => {
+      fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
 
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Event:", selectedEvent);
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(userData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Server Error");
+          }
+
+          return response.json();
+        })
+
+        .then((data) => {
+          document.getElementById("serverMessage").innerHTML =
+            "Registration submitted successfully!";
+
+          console.log("Server Response:", data);
+        })
+
+        .catch((error) => {
+          document.getElementById("serverMessage").innerHTML =
+            "Registration failed.";
+
+          console.error(error);
+        });
+    }, 2000);
   }
 });

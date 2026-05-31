@@ -476,3 +476,9 @@ nav {
   display: block;
   margin-bottom: 10px;
 }
+
+#serverMessage {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
