@@ -624,17 +624,17 @@ form.addEventListener("submit", function (event) {
     };
 
     console.log("Name:", name);
-console.log("Email:", email);
-console.log("Selected Event:", selectedEvent);
+    console.log("Email:", email);
+    console.log("Selected Event:", selectedEvent);
 
-console.log("Validation Passed");
+    console.log("Validation Passed");
 
     document.getElementById("serverMessage").innerHTML =
       "Sending registration...";
 
     setTimeout(() => {
       console.log("Sending Data to Server:");
-console.log(userData);
+      console.log(userData);
       fetch("https://jsonplaceholder.typicode.com/posts", {
         method: "POST",
 
@@ -647,7 +647,6 @@ console.log(userData);
         .then((response) => {
           console.log("Server Response Received");
 
-console.log(data);
           if (!response.ok) {
             throw new Error("Server Error");
           }
@@ -665,10 +664,22 @@ console.log(data);
         .catch((error) => {
           document.getElementById("serverMessage").innerHTML =
             "Registration failed.";
-console.error("Fetch Failed");
+          console.error("Fetch Failed");
 
-console.error(error);
+          console.error(error);
         });
     }, 2000);
   }
+});
+
+$(document).ready(function () {
+  $("#registerBtn").click(function () {
+    alert("Register Button Clicked");
+
+    $("#jqueryCard").fadeOut(1000);
+
+    setTimeout(function () {
+      $("#jqueryCard").fadeIn(1000);
+    }, 1000);
+  });
 });
