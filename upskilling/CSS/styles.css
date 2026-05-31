@@ -450,3 +450,14 @@ nav {
     height: auto;
   }
 }
+
+#eventControls {
+  text-align: center;
+  margin: 20px;
+}
+
+#eventControls input,
+#eventControls select {
+  padding: 10px;
+  margin: 10px;
+}
