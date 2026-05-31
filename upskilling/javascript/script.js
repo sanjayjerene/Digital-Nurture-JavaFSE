@@ -623,9 +623,18 @@ form.addEventListener("submit", function (event) {
       event: selectedEvent,
     };
 
+    console.log("Name:", name);
+console.log("Email:", email);
+console.log("Selected Event:", selectedEvent);
+
+console.log("Validation Passed");
+
     document.getElementById("serverMessage").innerHTML =
       "Sending registration...";
+
     setTimeout(() => {
+      console.log("Sending Data to Server:");
+console.log(userData);
       fetch("https://jsonplaceholder.typicode.com/posts", {
         method: "POST",
 
@@ -636,6 +645,9 @@ form.addEventListener("submit", function (event) {
         body: JSON.stringify(userData),
       })
         .then((response) => {
+          console.log("Server Response Received");
+
+console.log(data);
           if (!response.ok) {
             throw new Error("Server Error");
           }
@@ -653,8 +665,9 @@ form.addEventListener("submit", function (event) {
         .catch((error) => {
           document.getElementById("serverMessage").innerHTML =
             "Registration failed.";
+console.error("Fetch Failed");
 
-          console.error(error);
+console.error(error);
         });
     }, 2000);
   }
