@@ -293,3 +293,94 @@ function registerForEvent(eventName) {
 
 // Run when page loads
 window.addEventListener("load", displayEvents);
+let communityEvents = [
+  {
+    name: "Music Festival",
+    category: "Entertainment",
+    seats: 50,
+  },
+  {
+    name: "Food Fair",
+    category: "Food",
+    seats: 30,
+  },
+  {
+    name: "Sports Day",
+    category: "Sports",
+    seats: 20,
+  },
+  {
+    name: "Health Camp",
+    category: "Health",
+    seats: 25,
+  },
+];
+
+function addEvent(name, category, seats) {
+  communityEvents.push({
+    name: name,
+    category: category,
+    seats: seats,
+  });
+
+  console.log(`${name} added successfully`);
+}
+
+function registerUser(eventName) {
+  let event = communityEvents.find((e) => e.name === eventName);
+
+  if (event && event.seats > 0) {
+    event.seats--;
+    console.log(`Registered for ${eventName}`);
+    console.log(`Remaining Seats: ${event.seats}`);
+  } else {
+    console.log("Registration Failed");
+  }
+}
+
+function filterEventsByCategory(category, callback) {
+  let filteredEvents = communityEvents.filter(
+    (event) => event.category === category,
+  );
+
+  callback(filteredEvents);
+}
+
+function displayFilteredEvents(events) {
+  console.log("Filtered Events:");
+
+  events.forEach((event) => {
+    console.log(
+      `${event.name} | ${event.category} | Seats: ${event.seats}`
+    );
+  });
+}
+
+function createRegistrationTracker(category) {
+  let totalRegistrations = 0;
+
+  return function () {
+    totalRegistrations++;
+
+    console.log(
+      `${category} Registrations: ${totalRegistrations}`,
+    );
+  };
+}
+
+const entertainmentTracker =
+  createRegistrationTracker("Entertainment");
+
+
+addEvent("Cultural Night", "Entertainment", 40);
+
+registerUser("Music Festival");
+
+entertainmentTracker();
+entertainmentTracker();
+entertainmentTracker();
+
+filterEventsByCategory(
+  "Entertainment",
+  displayFilteredEvents
+);
