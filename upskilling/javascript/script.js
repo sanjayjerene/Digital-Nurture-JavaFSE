@@ -220,3 +220,76 @@ function registerParticipant() {
 
   alert(`Registration Successful!\nRemaining Seats: ${availableSeats}`);
 }
+// Event List
+const events = [
+  {
+    name: "Music Festival",
+    date: "2026-12-15",
+    seats: 50,
+  },
+  {
+    name: "Food Fair",
+    date: "2025-01-10",
+    seats: 30,
+  },
+  {
+    name: "Sports Day",
+    date: "2026-08-20",
+    seats: 0,
+  },
+  {
+    name: "Health Camp",
+    date: "2026-10-05",
+    seats: 25,
+  },
+];
+
+// Display Only Upcoming Events with Available Seats
+function displayEvents() {
+  const eventList = document.getElementById("eventList");
+  eventList.innerHTML = "";
+
+  const today = new Date();
+
+  events.forEach((event) => {
+    const eventDate = new Date(event.date);
+
+    // if-else condition
+    if (eventDate > today && event.seats > 0) {
+      const li = document.createElement("li");
+      li.innerHTML = `${event.name} - ${event.date} - Seats: ${event.seats}`;
+      eventList.appendChild(li);
+    } else {
+      console.log(`${event.name} is hidden (Past event or Full)`);
+    }
+  });
+}
+
+// Registration with Error Handling
+function registerForEvent(eventName) {
+  try {
+    const event = events.find((e) => e.name === eventName);
+
+    if (!event) {
+      throw new Error("Event not found");
+    }
+
+    if (event.seats <= 0) {
+      throw new Error("No seats available");
+    }
+
+    event.seats--;
+
+    alert(
+      `Registration Successful for ${event.name}\nRemaining Seats: ${event.seats}`,
+    );
+
+    displayEvents();
+  } catch (error) {
+    alert("Registration Error: " + error.message);
+    console.error(error);
+  }
+}
+
+// Run when page loads
+window.addEventListener("load", displayEvents);
