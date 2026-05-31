@@ -461,3 +461,65 @@ const displayCards = communityEventsArray.map(
 
 console.log("Formatted Display Cards:");
 displayCards.forEach((card) => console.log(card));
+const domEvents = [
+  {
+    name: "Music Festival",
+    seats: 50,
+    maxSeats: 50,
+  },
+  {
+    name: "Food Fair",
+    seats: 30,
+    maxSeats: 30,
+  },
+  {
+    name: "Sports Day",
+    seats: 20,
+    maxSeats: 20,
+  },
+];
+const eventContainer = document.querySelector("#eventContainer");
+
+function renderEvents() {
+  eventContainer.innerHTML = "";
+
+  domEvents.forEach((event, index) => {
+    const card = document.createElement("div");
+
+    card.className = "eventCard";
+
+    card.innerHTML = `
+      <h3>${event.name}</h3>
+      <p>Available Seats: ${event.seats}</p>
+      <center>
+      <button onclick="registerEvent(${index})" class="register-btn button-group">
+        Register
+      </button>
+
+      <button onclick="cancelEvent(${index})" class="register-btn button-group">
+        Cancel
+      </button>
+      </center>
+    `;
+
+    eventContainer.appendChild(card);
+  });
+}
+
+function registerEvent(index) {
+  if (domEvents[index].seats > 0) {
+    domEvents[index].seats--;
+    renderEvents();
+  } else {
+    alert("No seats available.");
+  }
+}
+function cancelEvent(index) {
+  if (domEvents[index].seats < domEvents[index].maxSeats) {
+    domEvents[index].seats++;
+    renderEvents();
+  } else {
+    alert("All seats are already available.");
+  }
+}
+renderEvents();
