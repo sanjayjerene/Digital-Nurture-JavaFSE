@@ -384,3 +384,38 @@ filterEventsByCategory(
   "Entertainment",
   displayFilteredEvents
 );
+class Event {
+  constructor(name, category, seats) {
+    this.name = name;
+    this.category = category;
+    this.seats = seats;
+  }
+}
+
+Event.prototype.checkAvailability = function () {
+  if (this.seats > 0) {
+    return `${this.name}: Seats Available (${this.seats})`;
+  } else {
+    return `${this.name}: Fully Booked`;
+  }
+};
+
+const event1 = new Event(
+  "Music Festival",
+  "Entertainment",
+  50,
+);
+
+const event2 = new Event(
+  "Sports Day",
+  "Sports",
+  0,
+);
+
+console.log(event1.checkAvailability());
+console.log(event2.checkAvailability());
+console.log("Event 1 Details:");
+
+Object.entries(event1).forEach(([key, value]) => {
+  console.log(`${key}: ${value}`);
+});
