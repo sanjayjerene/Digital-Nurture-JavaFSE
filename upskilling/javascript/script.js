@@ -629,3 +629,52 @@ async function fetchEventsAsync() {
     console.error(error);
   }
 }
+const form = document.getElementById("registrationForm");
+
+form.addEventListener("submit", function (event) {
+
+  event.preventDefault();
+
+  const name =
+    form.elements["name"].value.trim();
+
+  const email =
+    form.elements["email"].value.trim();
+
+  const selectedEvent =
+    form.elements["event"].value;
+
+  document.getElementById("nameError").innerHTML = "";
+  document.getElementById("emailError").innerHTML = "";
+  document.getElementById("eventError").innerHTML = "";
+
+  let isValid = true;
+
+  if (name === "") {
+    document.getElementById("nameError").innerHTML =
+      "Name is required";
+    isValid = false;
+  }
+
+  if (!email.includes("@")) {
+    document.getElementById("emailError").innerHTML =
+      "Enter valid email";
+    isValid = false;
+  }
+
+  if (selectedEvent === "") {
+    document.getElementById("eventError").innerHTML =
+      "Select an event";
+    isValid = false;
+  }
+
+  if (isValid) {
+
+    document.getElementById("confirmation").innerHTML =
+      `Registration Successful for ${selectedEvent}`;
+
+    console.log("Name:", name);
+    console.log("Email:", email);
+    console.log("Event:", selectedEvent);
+  }
+});
