@@ -566,3 +566,66 @@ document
     }
   });
 renderEvents();
+function fetchEvents() {
+  document.getElementById("loading").style.display = "block";
+
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+
+      return response.json();
+    })
+
+    .then((data) => {
+      document.getElementById("loading").style.display = "none";
+
+      console.log("Events Loaded:");
+      const container = document.querySelector("#eventContainer");
+
+      container.innerHTML = "";
+
+      data.forEach((event) => {
+        const card = document.createElement("div");
+
+        card.className = "eventCard";
+
+        card.innerHTML = `
+    <h3>${event.name}</h3>
+    <p>${event.email}</p>
+  `;
+
+        container.appendChild(card);
+      });
+    })
+
+    .catch((error) => {
+      document.getElementById("loading").style.display = "none";
+
+      console.error(error);
+    });
+}
+
+async function fetchEventsAsync() {
+  try {
+    document.getElementById("loading").style.display = "block";
+
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch data");
+    }
+
+    const data = await response.json();
+
+    document.getElementById("loading").style.display = "none";
+
+    console.log("Events Loaded (Async/Await):");
+    console.log(data);
+  } catch (error) {
+    document.getElementById("loading").style.display = "none";
+
+    console.error(error);
+  }
+}

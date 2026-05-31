@@ -461,3 +461,9 @@ nav {
   padding: 10px;
   margin: 10px;
 }
+#loading {
+  text-align: center;
+  font-weight: bold;
+  color: blue;
+  margin: 15px;
+}
